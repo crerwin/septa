@@ -15,6 +15,9 @@ func main() {
 		"route": func() (cli.Command, error) {
 			return &command.RouteCommand{}, nil
 		},
+		"elevator": func() (cli.Command, error) {
+			return &command.ElevatorCommand{}, nil
+		},
 	}
 
 	exitStatus, err := c.Run()

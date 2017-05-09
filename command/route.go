@@ -12,7 +12,11 @@ import (
 type RouteCommand struct {
 }
 
-func (r *RouteCommand) Run(args []string) int {
+func (c *RouteCommand) Run(args []string) int {
+	if len(args) < 1 {
+		fmt.Println("please specify a route number")
+		return 1
+	}
 	var routeNumber = args[0]
 	url := fmt.Sprintf("http://www3.septa.org/beta/TransitView/" + routeNumber)
 
@@ -44,10 +48,10 @@ func (r *RouteCommand) Run(args []string) int {
 	return 0
 }
 
-func (r *RouteCommand) Help() string {
+func (c *RouteCommand) Help() string {
 	return "route help"
 }
 
-func (r *RouteCommand) Synopsis() string {
+func (c *RouteCommand) Synopsis() string {
 	return "route synopsis"
 }
