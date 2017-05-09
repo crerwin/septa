@@ -12,8 +12,8 @@ func main() {
 	c := cli.NewCLI("septa", Version)
 	c.Args = os.Args[1:]
 	c.Commands = map[string]cli.CommandFactory{
-		"route": func() (cli.Command, error) {
-			return &command.RouteCommand{}, nil
+		"transitview": func() (cli.Command, error) {
+			return &command.TransitViewCommand{}, nil
 		},
 		"elevator": func() (cli.Command, error) {
 			return &command.ElevatorCommand{}, nil

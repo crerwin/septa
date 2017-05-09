@@ -9,10 +9,10 @@ import (
 	"github.com/crerwin/septa/septa"
 )
 
-type RouteCommand struct {
+type TransitViewCommand struct {
 }
 
-func (c *RouteCommand) Run(args []string) int {
+func (c *TransitViewCommand) Run(args []string) int {
 	if len(args) < 1 {
 		fmt.Println("please specify a route number")
 		return 1
@@ -48,10 +48,10 @@ func (c *RouteCommand) Run(args []string) int {
 	return 0
 }
 
-func (c *RouteCommand) Help() string {
+func (c *TransitViewCommand) Help() string {
 	return "route help"
 }
 
-func (c *RouteCommand) Synopsis() string {
-	return "route synopsis"
+func (c *TransitViewCommand) Synopsis() string {
+	return "bus and trolley information"
 }
