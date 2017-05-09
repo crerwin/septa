@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	c := cli.NewCLI("septa", "0.0.1")
+	c := cli.NewCLI("septa", Version)
 	c.Args = os.Args[1:]
 	c.Commands = map[string]cli.CommandFactory{
 		"route": func() (cli.Command, error) {
