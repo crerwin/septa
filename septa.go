@@ -1,25 +1,26 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
 
 	"github.com/crerwin/septa/command"
+	"github.com/mitchellh/cli"
 )
 
 func main() {
-	fmt.Println("SEPTA command line version " + Version)
-	fmt.Println("Copyright 2017 Chris Erwin")
-
-	args := os.Args
-	if len(args) == 1 {
-		fmt.Println("buses")
-		os.Exit(0)
+	c := cli.NewCLI("septa", "0.0.1")
+	c.Args = os.Args[1:]
+	c.Commands = map[string]cli.CommandFactory{
+		"route": func() (cli.Command, error) {
+			return &command.RouteCommand{}, nil
+		},
 	}
 
-	routeNumber := args[2]
-	route := command.Route{
-		RouteNumber: routeNumber,
+	exitStatus, err := c.Run()
+	if err != nil {
+		log.Println(err)
 	}
-	route.Show()
+
+	os.Exit(exitStatus)
 }
